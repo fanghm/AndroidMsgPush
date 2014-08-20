@@ -1,0 +1,41 @@
+About Code:
+-----------
+com.way.activity：理所当然的是所有Activity了，不多说。
+    WelcomeActivity: splash: D:\temp\pushMessage\res\drawable-hdpi\splash.jpg
+	FirstSetActivity: 用户注册
+	MainActivity: 主界面
+	ChatActivity
+	
+	
+com.way.adapter：这个是所有用到的适配器，比如ListView等等，也不多说。
+
+com.way.app：这里我放了两个类:
+	一个是Application，被我当作全局变量保存的工具类了
+	PushApplication: API Key & Secret Key
+	另外一个是接替系统异常处理的类，如果报错了，会把错误信息保存到文件，然后提示用户以邮件的形式发送给我，希望朋友们如果在遇到报错能不吝把log发送给我，谢谢！
+
+com.way.baidupush.client：这里是接收百度服务器推送过来消息的广播接收者：PushMessageReceiver，所有消息都是通过这里接收的，另外我自己加了一个网络变化的接收，根据网络状况作出不同的处理。
+
+com.way.baidupush.server：这里是发送消息的封装，我们要推送的消息是在这里通过HTTP请求百度服务器的，主要是一些HTTP请求的封装，看一下就知道了。
+	RestApi.java: API Key
+    BaiduPush: 发送REST请求
+    
+com.way.bean：这是bean包，不多说了，JAVA的基础知识，java bean。
+
+com.way.common.uti：l这里是我放一些工具类的包，比如Log封装，Toast封装，网络判断，发送消息异步任务，Dialog等等。。。
+	SendMsgAsyncTask.java: send msg
+	DialogUtil: 显示各种对话框
+	SharePreferenceUtil: 配置参数   /data/data/<package name>/shared_prefs         push_msg_sp
+	JsonUtil json消息整合
+	SendMsgAsyncTask    异步REST消息发送, 失败会不断重发, 成功后调用sendSuccess接口
+	
+com.way.db：这是是数据库操作包，有User、Message、最近通话都是保存在数据库的。
+    UserDB 对数据库进行操作
+    UserDBHelper 创建数据库user.db  user (userId,nick,img,channelId,_group)
+    
+com.way.fragment：这里是放左右滑动菜单的左菜单和右菜单fragment。
+    LeftFragment 好友列表
+    RightFragment 设置
+    
+
+消息日志文件: pushservice/files/msg20140809.log
